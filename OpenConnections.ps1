@@ -1,0 +1,1 @@
+ Get-NetTCPConnection | ? {($_.State -eq "Established") -and ($_.RemoteAddress -ne "127.0.0.1") | Select-Object local*,remote*,state,@{Name="Process";Expression={(Get-Process -Id $_.OwningProcess).ProcessName}} | Out-GridView
